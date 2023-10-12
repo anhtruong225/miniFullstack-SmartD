@@ -44,6 +44,9 @@ function CreateProduct({ setProducts }) {
       })
       .catch((error) => {
         console.log("Error:", error);
+        if (error.response) {
+          console.log("Server response:", error.response.data);
+        }
       });
   };
 
@@ -124,6 +127,13 @@ function CreateProduct({ setProducts }) {
           value={newProduct.quantity_remaining}
           onChange={handleChange}
           placeholder="Remaining quantity of products"
+        />
+        <input
+          type="date"
+          name="date_of_supply"
+          value={newProduct.date_of_supply}
+          onChange={handleChange}
+          placeholder="Date of supply"
         />
         <button type="submit">Create Product</button>
       </form>
